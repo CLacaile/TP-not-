@@ -22,16 +22,20 @@ public class DAOFacture extends DAO<Facture> {
             if(rs.next()) {
                 facture.setIdFact(rs.getInt(1));
                 facture.setClientFact(daoclient.find(rs.getInt(2)));
-                facture.setMontantFact(rs.getDouble(4));
+                facture.setMontantFact(rs.getDouble(5));
             }
             if (rs.first()) {
                 DAOProduit daoprod = new DAOProduit();
                 ArrayList<Produit> listProduit = new ArrayList<Produit>();
+                ArrayList<Integer> qteProduit = new ArrayList<Integer>();
                 rs.beforeFirst();
                 while(rs.next()) {
                     listProduit.add(daoprod.find(rs.getInt(3)));
+                    qteProduit.add(rs.getInt(4));
                 }
                 rs.first();
+                facture.setProduitsFact(listProduit);
+                facture.setQteProdFact(qteProduit);
             }
         }
         catch(SQLException e) {
