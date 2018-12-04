@@ -12,11 +12,11 @@ public class ConnectionJDBC {
 	public static Connection initConnection() {
 		
 		userInfo.setProperty("user", "root");
-		userInfo.setProperty("password", "");
+		userInfo.setProperty("password", "root");
 		
 		if(conn == null) {
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp5_sgbd?useSSL=false", userInfo);
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/tp_sgbd?useSSL=false", userInfo);
 			}
 			catch(SQLException e){
 				e.printStackTrace();
