@@ -16,7 +16,7 @@ public class DAOFacture extends DAO<Facture> {
 
         PreparedStatement pst;
         try {
-            String sql = "SELECT * FROM facture WHERE idFacture = " +id;
+            String sql = "SELECT * FROM facture WHERE idFact = " +id;
             pst = connect.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
