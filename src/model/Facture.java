@@ -2,11 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Permet d'émettre une facture
+ */
 public class Facture {
     private int idFact;
     private Client clientFact;
     private ArrayList<Produit> produitsFact;
-    private int montantFact;
+    private double montantFact;
 
     public int getIdFact() {
         return idFact;
@@ -32,11 +35,11 @@ public class Facture {
         this.produitsFact = produitsFact;
     }
 
-    public int getMontantFact() {
+    public double getMontantFact() {
         return montantFact;
     }
 
-    public void setMontantFact(int montantFact) {
+    public void setMontantFact(double montantFact) {
         this.montantFact = montantFact;
     }
 }
