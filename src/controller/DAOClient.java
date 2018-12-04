@@ -21,7 +21,7 @@ public class DAOClient extends DAO<Client> {
                 client.setPrenomC(rs.getString(3));
                 client.setAdresseC(rs.getString(4));
                 client.setVilleC(rs.getString(5));
-                client.setReductionC(rs.getInt(6));
+                client.setReductionC(rs.getDouble(6));
             }
         }
         catch (SQLException e) {
