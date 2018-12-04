@@ -9,6 +9,17 @@ public class Main {
         TPView theView = new TPView();
         TPController theController = new TPController(theModel, theView);
 
+        System.out.println("************* Liste des produits *************");
+        DAO<Produit> daoprod = new DAOProduit();
+        for(int i=1; i<3; i++) {
+            System.out.println("---------- Produit #"+i+" ----------");
+            System.out.println("Nom: "+ daoprod.find(i).getNomP());
+            System.out.println("Catégorie: "+ daoprod.find(i).getCatP());
+            System.out.println("Espèce: "+ daoprod.find(i).getEspeceP());
+            System.out.println("Prix: "+ daoprod.find(i).getPrixP() +"€");
+            System.out.println("Qté stock: "+ daoprod.find(i).getQteP());
+        }
+
         System.out.println("************* Liste des clients *************");
         DAO<Client> daoclient = new DAOClient();
         for(int i=1; i<3; i++) {
@@ -39,10 +50,27 @@ public class Main {
             System.out.println("Client: "+ c.getPrenomC() + " " + c.getNomC());
             for(int j=0; j<daofacture.find(i).getProduitsFact().size(); j++) {
                 Produit p = daofacture.find(i).getProduitsFact().get(j);
-                System.out.println("Produit #"+p.getIdP()+":\t"+p.getNomP()+"\t"+p.getPrixP()+"\t"+daofacture.find(i).getQteProdFact().get(j));
+                System.out.println("Produit #"+p.getIdP()+":\t"+p.getNomP()+"\t"+p.getPrixP()+"€\t"+daofacture.find(i).getQteProdFact().get(j));
             }
-            System.out.println("Montant total: "+daofacture.find(i).getMontantFact());
+            System.out.println("Montant total: "+daofacture.find(i).getMontantFact()+"€");
         }
+
+        System.out.println("************* Liste des bons de commandes *************");
+        DAO<Fourniture> daofourniture = new DAOFourniture();
+        for(int i=1; i<=2; i++) {
+            Fournisseur f = daofourniture.find(i).getFournisseurFourn();
+            System.out.println("---------- BdC #"+i+" ----------");
+            System.out.println("N°: "+ daofourniture.find(i).getIdFourn());
+            System.out.println("Fournisseur: "+ f.getNomF() + " " + f.getPrenomF());
+            //System.out.println(daofourniture.find(i).getProduitsFourn());
+            for(int j=0; j<daofourniture.find(i).getProduitsFourn().size(); j++) {
+                Produit p = daofourniture.find(i).getProduitsFourn().get(j);
+                System.out.println("Produit #"+p.getIdP()+":\t"+p.getNomP()+"\t"+p.getPrixP()+"€\t"+daofourniture.find(i).getQteProdFourn().get(j));
+            }
+            System.out.println("Montant total: "+daofourniture.find(i).getMontantFourn()+"€");
+        }
+
+
 
     }
 }
