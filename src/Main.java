@@ -22,6 +22,7 @@ public class Main {
 
         System.out.println("************* Liste des clients *************");
         DAO<Client> daoclient = new DAOClient();
+        System.out.println("Nombre de clients: "+((DAOClient) daoclient).getNbOfClients());
         for(int i=1; i<3; i++) {
             System.out.println("---------- Client #"+i+" ----------");
             System.out.println("Nom: "+ daoclient.find(i).getNomC());

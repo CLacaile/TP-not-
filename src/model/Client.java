@@ -55,4 +55,15 @@ public class Client {
     public void setReductionC(double reductionC) {
         this.reductionC = reductionC;
     }
+
+    public Object[] getClientInfo() {
+        Object[] infos = new Object[6];
+        infos[0] = Integer.toString(this.idC);
+        infos[1] = this.getNomC();
+        infos[2] = this.getPrenomC();
+        infos[3] = this.getAdresseC();
+        infos[4] = this.getVilleC();
+        infos[5] = Double.toString(this.reductionC);
+        return infos;
+    }
 }
