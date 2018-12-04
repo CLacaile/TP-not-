@@ -18,9 +18,10 @@ public class DAOProduit extends DAO<Produit> {
             if(rs.next()) {
                 produit.setIdP(rs.getInt(1));
                 produit.setNomP(rs.getString(2));
-                produit.setEspeceP(rs.getString(3));
-                produit.setPrixP(rs.getDouble(4));
-                produit.setQteP(rs.getInt(5));
+                produit.setCatP(rs.getString(3));
+                produit.setEspeceP(rs.getString(4));
+                produit.setPrixP(rs.getDouble(5));
+                produit.setQteP(rs.getInt(6));
             }
         }
         catch (SQLException e) {
