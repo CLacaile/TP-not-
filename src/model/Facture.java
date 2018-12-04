@@ -9,6 +9,7 @@ public class Facture {
     private int idFact;
     private Client clientFact;
     private ArrayList<Produit> produitsFact;
+    private ArrayList<Integer> qteProdFact;
     private double montantFact;
 
     public int getIdFact() {
@@ -42,4 +43,13 @@ public class Facture {
     public void setMontantFact(double montantFact) {
         this.montantFact = montantFact;
     }
+
+    public ArrayList<Integer> getQteProdFact() {
+        return qteProdFact;
+    }
+
+    public void setQteProdFact(ArrayList<Integer> qteProd) {
+        this.qteProdFact = qteProd;
+    }
+
 }
