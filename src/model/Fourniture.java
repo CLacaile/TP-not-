@@ -9,7 +9,16 @@ public class Fourniture {
     private int idFourn;
     private Fournisseur fournisseurFourn;
     private ArrayList<Produit> produitsFourn;
+    private ArrayList<Integer> qteProdFourn;
     private double montantFourn;
+
+    public ArrayList<Integer> getQteProdFourn() {
+        return qteProdFourn;
+    }
+
+    public void setQteProdFourn(ArrayList<Integer> qteProdFourn) {
+        this.qteProdFourn = qteProdFourn;
+    }
 
     public int getIdFourn() {
         return idFourn;
@@ -34,6 +43,8 @@ public class Fourniture {
     public void setProduitsFourn(ArrayList<Produit> produitsFourn) {
         this.produitsFourn = produitsFourn;
     }
+
+
 
     public double getMontantFourn() {
         return montantFourn;
