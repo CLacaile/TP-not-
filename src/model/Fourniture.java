@@ -11,4 +11,35 @@ public class Fourniture {
     private ArrayList<Produit> produitsFourn;
     private double montantFourn;
 
+    public int getIdFourn() {
+        return idFourn;
+    }
+
+    public void setIdFourn(int idFourn) {
+        this.idFourn = idFourn;
+    }
+
+    public Fournisseur getFournisseurFourn() {
+        return fournisseurFourn;
+    }
+
+    public void setFournisseurFourn(Fournisseur fournisseurFourn) {
+        this.fournisseurFourn = fournisseurFourn;
+    }
+
+    public ArrayList<Produit> getProduitsFourn() {
+        return produitsFourn;
+    }
+
+    public void setProduitsFourn(ArrayList<Produit> produitsFourn) {
+        this.produitsFourn = produitsFourn;
+    }
+
+    public double getMontantFourn() {
+        return montantFourn;
+    }
+
+    public void setMontantFourn(double montantFourn) {
+        this.montantFourn = montantFourn;
+    }
 }
