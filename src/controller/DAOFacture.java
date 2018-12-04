@@ -12,7 +12,6 @@ public class DAOFacture extends DAO<Facture> {
     @Override
     public Facture find(int id) {
         Facture facture = new Facture();
-
         DAOClient daoclient = new DAOClient();
 
         PreparedStatement pst;
