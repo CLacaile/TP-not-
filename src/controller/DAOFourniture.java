@@ -23,16 +23,20 @@ public class DAOFourniture extends DAO<Fourniture> {
             if(rs.next()) {
                 fourniture.setIdFourn(rs.getInt(1));
                 fourniture.setFournisseurFourn(daofourn.find(rs.getInt(2)));
-                fourniture.setMontantFourn(rs.getDouble(4));
+                fourniture.setMontantFourn(rs.getDouble(5));
             }
             if (rs.first()) {
                 DAOProduit daoprod = new DAOProduit();
                 ArrayList<Produit> listProduit = new ArrayList<Produit>();
+                ArrayList<Integer> qteProduit = new ArrayList<Integer>();
                 rs.beforeFirst();
                 while(rs.next()) {
                     listProduit.add(daoprod.find(rs.getInt(3)));
+                    qteProduit.add(rs.getInt(4));
                 }
                 rs.first();
+                fourniture.setProduitsFourn(listProduit);
+                fourniture.setQteProdFourn(qteProduit);
             }
         }
         catch(SQLException e) {
