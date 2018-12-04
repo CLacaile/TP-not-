@@ -16,11 +16,13 @@ public class DAOFournisseur extends DAO<Fournisseur> {
             String sql = "SELECT * FROM fournisseur WHERE idF = " +id;
             pst = connect.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            fournisseur.setIdF(rs.getInt(1));
-            fournisseur.setNomF(rs.getString(2));
-            fournisseur.setPrenomF(rs.getString(3));
-            fournisseur.setAdresseF(rs.getString(4));
-            fournisseur.setVilleF(rs.getString(5));
+            if(rs.next()) {
+                fournisseur.setIdF(rs.getInt(1));
+                fournisseur.setNomF(rs.getString(2));
+                fournisseur.setPrenomF(rs.getString(3));
+                fournisseur.setAdresseF(rs.getString(4));
+                fournisseur.setVilleF(rs.getString(5));
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();

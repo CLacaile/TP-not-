@@ -15,12 +15,14 @@ public class DAOClient extends DAO<Client> {
             String sql = "SELECT * FROM client WHERE idC = " +id;
             pst = connect.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            client.setIdC(rs.getInt(1));
-            client.setNomC(rs.getString(2));
-            client.setPrenomC(rs.getString(3));
-            client.setAdresseC(rs.getString(4));
-            client.setVilleC(rs.getString(5));
-            client.setReductionC(rs.getInt(6));
+            if (rs.next()) {
+                client.setIdC(rs.getInt(1));
+                client.setNomC(rs.getString(2));
+                client.setPrenomC(rs.getString(3));
+                client.setAdresseC(rs.getString(4));
+                client.setVilleC(rs.getString(5));
+                client.setReductionC(rs.getInt(6));
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();

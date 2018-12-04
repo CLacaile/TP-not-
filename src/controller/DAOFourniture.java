@@ -20,9 +20,11 @@ public class DAOFourniture extends DAO<Fourniture> {
             String sql = "SELECT * FROM fourniture WHERE idFourniture = " +id;
             pst = connect.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            fourniture.setIdFourn(rs.getInt(1));
-            fourniture.setFournisseurFourn(daofourn.find(rs.getInt(2)));
-            fourniture.setMontantFourn(rs.getDouble(4));
+            if(rs.next()) {
+                fourniture.setIdFourn(rs.getInt(1));
+                fourniture.setFournisseurFourn(daofourn.find(rs.getInt(2)));
+                fourniture.setMontantFourn(rs.getDouble(4));
+            }
             if (rs.first()) {
                 DAOProduit daoprod = new DAOProduit();
                 ArrayList<Produit> listProduit = new ArrayList<Produit>();

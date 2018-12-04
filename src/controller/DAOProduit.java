@@ -15,11 +15,13 @@ public class DAOProduit extends DAO<Produit> {
             String sql = "SELECT * FROM produit WHERE idP = " +id;
             pst = connect.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            produit.setIdP(rs.getInt(1));
-            produit.setNomP(rs.getString(2));
-            produit.setEspeceP(rs.getString(3));
-            produit.setPrixP(rs.getDouble(4));
-            produit.setQteP(rs.getInt(5));
+            if(rs.next()) {
+                produit.setIdP(rs.getInt(1));
+                produit.setNomP(rs.getString(2));
+                produit.setEspeceP(rs.getString(3));
+                produit.setPrixP(rs.getDouble(4));
+                produit.setQteP(rs.getInt(5));
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();

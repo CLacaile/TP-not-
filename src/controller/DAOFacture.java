@@ -19,9 +19,11 @@ public class DAOFacture extends DAO<Facture> {
             String sql = "SELECT * FROM facture WHERE idFacture = " +id;
             pst = connect.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            facture.setIdFact(rs.getInt(1));
-            facture.setClientFact(daoclient.find(rs.getInt(2)));
-            facture.setMontantFact(rs.getDouble(4));
+            if(rs.next()) {
+                facture.setIdFact(rs.getInt(1));
+                facture.setClientFact(daoclient.find(rs.getInt(2)));
+                facture.setMontantFact(rs.getDouble(4));
+            }
             if (rs.first()) {
                 DAOProduit daoprod = new DAOProduit();
                 ArrayList<Produit> listProduit = new ArrayList<Produit>();
