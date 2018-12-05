@@ -137,8 +137,8 @@ public class FactureGroupBox extends JPanel {
         ///setting coordinates
         gc.gridx = 0;
         gc.gridy = 6;
-        gc.gridwidth = 5;
-        gc.gridheight = 4;
+        gc.gridwidth = 6;
+        gc.gridheight = 5;
         gc.fill = GridBagConstraints.BOTH;
         ///setting table
         this.produitsAjoutesTable = new JTable(new DefaultTableModel(produitsAjoutesTableHeader, 0));
@@ -153,7 +153,7 @@ public class FactureGroupBox extends JPanel {
         /// Montant HT title
         this.montantHTTitleLabel = new JLabel("Montant HT: ");
         gc.gridx = 4;
-        gc.gridy = 10;
+        gc.gridy = 11;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -161,7 +161,7 @@ public class FactureGroupBox extends JPanel {
         ///TVA title label
         this.tauxTVATitleLabel = new JLabel("Taux TVA: ");
         gc.gridx = 4;
-        gc.gridy = 11;
+        gc.gridy = 12;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -169,7 +169,7 @@ public class FactureGroupBox extends JPanel {
         ///Reduction title label
         this.reductionTitleLabel = new JLabel("Réduction: ");
         gc.gridx = 4;
-        gc.gridy = 12;
+        gc.gridy = 13;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -177,7 +177,7 @@ public class FactureGroupBox extends JPanel {
         ///client adresse title label
         this.montantTotalTitleLabel= new JLabel("Total: ");
         gc.gridx = 4;
-        gc.gridy = 13;
+        gc.gridy = 14;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -186,7 +186,7 @@ public class FactureGroupBox extends JPanel {
 
         // Facture texts
         /// Montant HT text
-        this.montantHTLabel = new JLabel("");
+        this.montantHTLabel = new JLabel("???");
         gc.gridx = 5;
         gc.gridy = 10;
         gc.gridwidth = 1;
@@ -194,7 +194,7 @@ public class FactureGroupBox extends JPanel {
         gc.fill = GridBagConstraints.HORIZONTAL;
         this.add(montantHTLabel, gc);
         ///TVA text
-        this.tauxTVALabel = new JLabel("");
+        this.tauxTVALabel = new JLabel("???");
         gc.gridx = 5;
         gc.gridy = 11;
         gc.gridwidth = 1;
@@ -202,7 +202,7 @@ public class FactureGroupBox extends JPanel {
         gc.fill = GridBagConstraints.HORIZONTAL;
         this.add(tauxTVALabel, gc);
         ///Reduction text
-        this.reductionLabel = new JLabel("");
+        this.reductionLabel = new JLabel("???");
         gc.gridx = 5;
         gc.gridy = 12;
         gc.gridwidth = 1;
@@ -210,7 +210,7 @@ public class FactureGroupBox extends JPanel {
         gc.fill = GridBagConstraints.HORIZONTAL;
         this.add(reductionLabel, gc);
         ///client adresse title label
-        this.montantTotalLabel = new JLabel("");
+        this.montantTotalLabel = new JLabel("???");
         gc.gridx = 5;
         gc.gridy = 13;
         gc.gridwidth = 1;
