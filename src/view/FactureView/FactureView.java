@@ -1,4 +1,4 @@
-package view;
+package view.FactureView;
 
 import javax.swing.*;
 
