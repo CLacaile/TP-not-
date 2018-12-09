@@ -33,13 +33,13 @@ public class ClientGroupBox extends JPanel {
         this.add(nomCLabel, gc);
 
         // JLabel prénom
-        this.nomCLabel = new JLabel("Prénom: ");
+        this.prenomCLabel = new JLabel("Prénom: ");
         gc.gridx = 2;
         gc.gridy = 0;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.BOTH;
-        this.add(nomCLabel, gc);
+        this.add(prenomCLabel, gc);
 
 
         // Jcombo nom
