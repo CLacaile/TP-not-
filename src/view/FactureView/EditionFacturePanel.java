@@ -19,6 +19,7 @@ public class EditionFacturePanel extends JPanel {
 
     private FactureGroupBox factBox;
     private ClientGroupBox clientBox;
+    private ProduitGroupBox prodBox;
 
     public EditionFacturePanel(){
         // Layout
@@ -39,6 +40,14 @@ public class EditionFacturePanel extends JPanel {
         gc.fill = GridBagConstraints.BOTH;
         this.add(clientBox, gc);
 
+        // Produit Facture box
+        prodBox = new ProduitGroupBox();
+        gc.gridx = 0;
+        gc.gridy = 3;
+        gc.gridwidth = 5;
+        gc.gridheight = 1;
+        gc.fill = GridBagConstraints.BOTH;
+        this.add(prodBox, gc);
 
         // Edit Facture Box
         factBox = new FactureGroupBox();
@@ -48,6 +57,8 @@ public class EditionFacturePanel extends JPanel {
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.BOTH;
         this.add(factBox, gc);
+
+
 
         gc.anchor = GridBagConstraints.PAGE_END;
         // Enregistrer button
@@ -63,4 +74,9 @@ public class EditionFacturePanel extends JPanel {
     public ClientGroupBox getClientGroupBox() {
         return this.clientBox;
     }
+
+    public ProduitGroupBox getProduitGroupBox() {
+        return this.prodBox;
+    }
+
 }
