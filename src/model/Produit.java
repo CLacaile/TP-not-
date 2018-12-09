@@ -56,4 +56,23 @@ public class Produit {
     public void setQteP(int qteP) {
         this.qteP = qteP;
     }
+
+    public Object getNomPObject() {
+        return this.nomP;
+    }
+
+    public Object getCatPObject() {
+        return this.catP;
+    }
+
+    public Object[] getProduitInfo() {
+        Object[] infos = new Object[6];
+        infos[0] = Integer.toString(this.idP);
+        infos[1] = this.getNomP();
+        infos[2] = this.getCatP();
+        infos[3] = this.getEspeceP();
+        infos[4] = Double.toString(this.prixP);
+        infos[5] = Integer.toString(this.qteP);
+        return infos;
+    }
 }
