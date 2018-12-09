@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class TPModel {
     private ArrayList<Client> clients = new ArrayList<Client>();
     private ArrayList<Produit> produits = new ArrayList<Produit>();
+    private ArrayList<Facture> factures = new ArrayList<Facture>();
 
     public ArrayList<Client> getClients() {
         return clients;
@@ -22,5 +23,11 @@ public class TPModel {
         this.produits = produits;
     }
 
+    public ArrayList<Facture> getFactures() {
+        return factures;
+    }
 
+    public void setFactures(ArrayList<Facture> factures) {
+        this.factures = factures;
+    }
 }
