@@ -7,7 +7,7 @@ import java.awt.*;
 public class FactureGroupBox extends JPanel {
     private JTable produitsAjoutesTable;
     private Object[] produitsAjoutesTableHeader = {"ID", "Nom", "Catégorie", "Espèce", "Prix unitaire", "Quantité", "Prix total"};
-    private JLabel clientIDTitleLabel;
+    /*private JLabel clientIDTitleLabel;
     private JLabel clientIDLabel;
     private JLabel prenomClientTitleLabel = new JLabel("Prénom: ");
     private JLabel prenomClientLabel;
@@ -16,7 +16,7 @@ public class FactureGroupBox extends JPanel {
     private JLabel adresseClientTitleLabel = new JLabel("Adresse: ");
     private JLabel adresseClientLabel;
     private JLabel villeClientTitleLabel = new JLabel("Ville: ");
-    private JLabel villeClientLabel;
+    private JLabel villeClientLabel;*/
     private JLabel montantHTTitleLabel = new JLabel("Montant HT: ");
     private JLabel montantHTLabel;
     private JLabel tauxTVATitleLabel = new JLabel("Taux TVA: ");
@@ -33,7 +33,7 @@ public class FactureGroupBox extends JPanel {
         // Contraintes
         GridBagConstraints gc = setGBConstraints(5, 14);
 
-        // Client Info Titles
+        /*// Client Info Titles
         ///client title label
         this.clientIDTitleLabel = new JLabel("N° client: ");
         gc.gridx = 0;
@@ -131,17 +131,17 @@ public class FactureGroupBox extends JPanel {
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
-        this.add(reductionLabel, gc);
+        this.add(reductionLabel, gc);*/
 
         // Produit selectionnes Table
         ///setting coordinates
         gc.gridx = 0;
-        gc.gridy = 6;
+        gc.gridy = 0;
         gc.gridwidth = 6;
         gc.gridheight = 5;
         gc.fill = GridBagConstraints.BOTH;
         ///setting table
-        this.produitsAjoutesTable = new JTable(new DefaultTableModel(produitsAjoutesTableHeader, 0));
+        this.produitsAjoutesTable = new JTable(new DefaultTableModel(produitsAjoutesTableHeader, 4));
         this.produitsAjoutesTable.setFillsViewportHeight(true);
         this.produitsAjoutesTable.setEnabled(true);
         ///setting scroll
@@ -188,7 +188,7 @@ public class FactureGroupBox extends JPanel {
         /// Montant HT text
         this.montantHTLabel = new JLabel("???");
         gc.gridx = 5;
-        gc.gridy = 10;
+        gc.gridy = 11;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -196,7 +196,7 @@ public class FactureGroupBox extends JPanel {
         ///TVA text
         this.tauxTVALabel = new JLabel("???");
         gc.gridx = 5;
-        gc.gridy = 11;
+        gc.gridy = 12;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -204,7 +204,7 @@ public class FactureGroupBox extends JPanel {
         ///Reduction text
         this.reductionLabel = new JLabel("???");
         gc.gridx = 5;
-        gc.gridy = 12;
+        gc.gridy = 13;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -212,7 +212,7 @@ public class FactureGroupBox extends JPanel {
         ///client adresse title label
         this.montantTotalLabel = new JLabel("???");
         gc.gridx = 5;
-        gc.gridy = 13;
+        gc.gridy = 14;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.HORIZONTAL;
@@ -227,7 +227,7 @@ public class FactureGroupBox extends JPanel {
         gdbc.weighty = weighty;
         return gdbc;
     }
-    public void setClientIDLabel(String clientID) {
+    /*public void setClientIDLabel(String clientID) {
         this.clientIDLabel.setText(clientID);
     }
 
@@ -249,7 +249,7 @@ public class FactureGroupBox extends JPanel {
 
     public void setReductionLabel(String reduction) {
         this.villeClientLabel.setText(reduction);
-    }
+    }*/
 
     public void addRow(Object[] row) {
         DefaultTableModel model = (DefaultTableModel) this.produitsAjoutesTable.getModel();
