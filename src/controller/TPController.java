@@ -1,10 +1,12 @@
 package controller;
 
 import model.Client;
+import model.Facture;
 import model.Produit;
 import model.TPModel;
 import view.TPView;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class TPController {
@@ -12,6 +14,7 @@ public class TPController {
     private TPView view;
     private DAOClient DAOclient = new DAOClient();
     private DAOProduit DAOproduit = new DAOProduit();
+    private DAOFacture DAOfacture = new DAOFacture();
 
 
     public TPController(TPModel m, TPView v) {
@@ -35,8 +38,31 @@ public class TPController {
         }
         this.model.setProduits(produits);
         displayProduitsDataFromModel();
+
+        // Récupération des données factures au lancement de l'app
+        ArrayList<Facture> factures = new ArrayList<Facture>();
+        int nbOfFactures = this.DAOfacture.getNbOfFactures();
+        for(int i=0; i<nbOfFactures; i++) {
+            factures.add(this.DAOfacture.find(i+1));
+        }
+        this.model.setFactures(factures);
+        displayFacturesDataFromModel();
+
     }
 
+    /**
+     * Affiche les données des factures
+     */
+    private void displayFacturesDataFromModel() {
+        int nbOfFactures = this.model.getFactures().size();
+        for (int i=0; i<nbOfFactures; i++) {
+            this.view.getFacturePanel().addRow(this.model.getFactures().get(i).getFacturesInfo());
+        }
+    }
+
+    /**
+     * Affiche les données des produits
+     */
     private void displayProduitsDataFromModel() {
         int nbOfProduits = this.model.getProduits().size();
         for (int i=0; i<nbOfProduits; i++) {

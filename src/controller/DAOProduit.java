@@ -50,4 +50,15 @@ public class DAOProduit extends DAO<Produit> {
     public Produit create(Produit obj) {
         return null;
     }
+
+    @Override
+    public Produit update(Produit obj) {
+        return null;
+    }
+
+    @Override
+    public Produit delete(Produit obj) {
+        return null;
+    }
+
 }

@@ -50,4 +50,14 @@ public class DAOClient extends DAO<Client> {
     public Client create(Client obj) {
         return null;
     }
+
+    @Override
+    public Client update(Client obj) {
+        return null;
+    }
+
+    @Override
+    public Client delete(Client obj) {
+        return null;
+    }
 }

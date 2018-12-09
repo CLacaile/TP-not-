@@ -34,4 +34,14 @@ public class DAOFournisseur extends DAO<Fournisseur> {
     public Fournisseur create(Fournisseur obj) {
         return null;
     }
+
+    @Override
+    public Fournisseur update(Fournisseur obj) {
+        return null;
+    }
+
+    @Override
+    public Fournisseur delete(Fournisseur obj) {
+        return null;
+    }
 }

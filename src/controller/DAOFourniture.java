@@ -49,4 +49,14 @@ public class DAOFourniture extends DAO<Fourniture> {
     public Fourniture create(Fourniture obj) {
         return null;
     }
+
+    @Override
+    public Fourniture update(Fourniture obj) {
+        return null;
+    }
+
+    @Override
+    public Fourniture delete(Fourniture obj) {
+        return null;
+    }
 }
