@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class TPView extends JFrame {
     private ClientView clientPanel;
+    private ProduitView produitPanel;
     private EditionFacturePanel editFactPanel;
 
     public TPView() {
@@ -14,6 +15,10 @@ public class TPView extends JFrame {
         // Onglet "Clients"
         this.clientPanel = new ClientView();
         tabbedPane.addTab("Clients", null, clientPanel, "Voir et gérer les clients");
+
+        // Onglet "Produits"
+        this.produitPanel = new ProduitView();
+        tabbedPane.addTab("Produits", null, produitPanel, "Voir et gérer les produits");
 
         // Onglets "Facture"
         this.editFactPanel = new EditionFacturePanel();
@@ -30,6 +35,8 @@ public class TPView extends JFrame {
     }
 
     public ClientView getClientPanel() { return this.clientPanel;}
+
+    public ProduitView getProduitPanel() { return this.produitPanel;}
 
     public EditionFacturePanel getEditFactPanel() {
         return this.editFactPanel;

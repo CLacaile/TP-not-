@@ -1,6 +1,7 @@
 package controller;
 
 import model.Client;
+import model.Produit;
 import model.TPModel;
 import view.TPView;
 
@@ -10,6 +11,7 @@ public class TPController {
     private TPModel model;
     private TPView view;
     private DAOClient DAOclient = new DAOClient();
+    private DAOProduit DAOproduit = new DAOProduit();
 
 
     public TPController(TPModel m, TPView v) {
@@ -24,6 +26,24 @@ public class TPController {
         }
         this.model.setClients(clients);
         displayClientsDataFromModel();
+
+        // Récupération des données produits au lancement de l'app
+        ArrayList<Produit> produits = new ArrayList<Produit>();
+        int nbOfProduits = this.DAOproduit.getNbOfProduits();
+        for(int i=0; i<nbOfProduits; i++) {
+            produits.add(this.DAOproduit.find(i+1));
+        }
+        this.model.setProduits(produits);
+        displayProduitsDataFromModel();
+    }
+
+    private void displayProduitsDataFromModel() {
+        int nbOfProduits = this.model.getProduits().size();
+        for (int i=0; i<nbOfProduits; i++) {
+            this.view.getProduitPanel().addRow(this.model.getProduits().get(i).getProduitInfo());
+            this.view.getEditFactPanel().getProduitGroupBox().addCatPComboBox(this.model.getProduits().get(i).getCatPObject());
+            this.view.getEditFactPanel().getProduitGroupBox().addNomPComboBox(this.model.getProduits().get(i).getNomPObject());
+        }
     }
 
     /**
