@@ -52,4 +52,12 @@ public class Facture {
         this.qteProdFact = qteProd;
     }
 
+    public Object[] getFacturesInfo() {
+        Object[] infos = new Object[4];
+        infos[0] = Integer.toString(this.idFact);
+        infos[1] = this.clientFact.getPrenomC();
+        infos[2] = this.clientFact.getNomC();
+        infos[3] = Double.toString(this.getMontantFact());
+        return infos;
+    }
 }
