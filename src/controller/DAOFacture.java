@@ -9,6 +9,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAOFacture extends DAO<Facture> {
+
+    public int getNbOfFactures() {
+        int count = 0;
+        PreparedStatement pst;
+        try {
+            String sql = "SELECT COUNT(DISTINCT idFact) FROM facture";
+            pst = connect.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
     @Override
     public Facture find(int id) {
         Facture facture = new Facture();
@@ -46,6 +63,16 @@ public class DAOFacture extends DAO<Facture> {
 
     @Override
     public Facture create(Facture obj) {
+        return null;
+    }
+
+    @Override
+    public Facture update(Facture obj) {
+        return null;
+    }
+
+    @Override
+    public Facture delete(Facture obj) {
         return null;
     }
 }
