@@ -27,12 +27,14 @@ public class TPController {
     }
 
     /**
-     * Afficher les données dans le tableau
+     * Afficher les données client
      */
     public void displayClientsDataFromModel() {
         int nbOfClients = this.model.getClients().size();
         for (int i=0; i<nbOfClients; i++) {
             this.view.getClientPanel().addRow(this.model.getClients().get(i).getClientInfo());
+            this.view.getEditFactPanel().getClientGroupBox().addNomCComboBox(this.model.getClients().get(i).getNomCObject());
+            this.view.getEditFactPanel().getClientGroupBox().addPrenomCComboBox(this.model.getClients().get(i).getPrenomCObject());
         }
     }
 }

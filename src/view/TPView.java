@@ -1,13 +1,12 @@
 package view;
 
-import view.FactureView.EditionFactureView;
-import view.FactureView.FactureView;
+import view.FactureView.EditionFacturePanel;
 
 import javax.swing.*;
 
 public class TPView extends JFrame {
     private ClientView clientPanel;
-    private EditionFactureView editFactPanel;
+    private EditionFacturePanel editFactPanel;
 
     public TPView() {
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -17,7 +16,7 @@ public class TPView extends JFrame {
         tabbedPane.addTab("Clients", null, clientPanel, "Voir et gérer les clients");
 
         // Onglets "Facture"
-        this.editFactPanel = new EditionFactureView();
+        this.editFactPanel = new EditionFacturePanel();
         tabbedPane.addTab("Editer une facture", null, editFactPanel, "Créer une nouvelle facture");
 
         // Général
@@ -31,5 +30,9 @@ public class TPView extends JFrame {
     }
 
     public ClientView getClientPanel() { return this.clientPanel;}
+
+    public EditionFacturePanel getEditFactPanel() {
+        return this.editFactPanel;
+    }
 
 }

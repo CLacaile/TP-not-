@@ -20,11 +20,19 @@ public class Client {
         return nomC;
     }
 
+    public Object getNomCObject() {
+        return nomC;
+    }
+
     public void setNomC(String nomC) {
         this.nomC = nomC;
     }
 
     public String getPrenomC() {
+        return prenomC;
+    }
+
+    public Object getPrenomCObject() {
         return prenomC;
     }
 
