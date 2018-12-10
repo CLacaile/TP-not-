@@ -62,5 +62,15 @@ public class DAOFourniture extends DAO<Fourniture> {
 
     @Override
     public void delete(Fourniture obj) {
+        try {
+            String sql = "DELETE FROM fourniture WHERE idFourniture="+obj.getIdFourn();
+            PreparedStatement pst = connect.prepareStatement(sql);
+            pst.executeUpdate();
+            System.out.println("Bon de commande supprimé");
+            pst.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
