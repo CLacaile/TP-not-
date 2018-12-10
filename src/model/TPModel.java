@@ -11,12 +11,32 @@ public class TPModel {
         return clients;
     }
 
+    public Client getClientById(int id) {
+        int nbClients = this.clients.size();
+        for(int i=0; i<nbClients; i++) {
+            if(this.clients.get(i).getIdC() == id) {
+                return this.clients.get(i);
+            }
+        }
+        return null;
+    }
+
     public void setClients(ArrayList<Client> clients) {
         this.clients = clients;
     }
 
     public ArrayList<Produit> getProduits() {
         return produits;
+    }
+
+    public Produit getProduitById(int id) {
+        int nbProduits = this.produits.size();
+        for(int i=0; i<nbProduits; i++) {
+            if(this.produits.get(i).getIdP() == id) {
+                return this.produits.get(i);
+            }
+        }
+        return null;
     }
 
     public void setProduits(ArrayList<Produit> produits) {
