@@ -84,6 +84,16 @@ public class DAOProduit extends DAO<Produit> {
 
     @Override
     public void delete(Produit obj) {
+        try {
+            String sql = "DELETE FROM produit WHERE idP="+obj.getIdP();
+            PreparedStatement pst = connect.prepareStatement(sql);
+            pst.executeUpdate();
+            System.out.println("Produit supprimé");
+            pst.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
