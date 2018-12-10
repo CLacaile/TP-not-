@@ -45,28 +45,35 @@ public class FactureView extends JPanel {
             this.add(supprimerFactButton, gc);
         }
 
-        public void setProdTable(Object[][] prodTableData) {
+    public JTable getFactTable() {
+        return factTable;
+    }
+
+
+
+    public void setProdTable(Object[][] prodTableData) {
             this.factTable = new JTable(prodTableData, this.tableHeader);
             this.factTable.setFillsViewportHeight(true);
-        }
+    }
 
-        public void addRow(Object[] row) {
-            DefaultTableModel model = (DefaultTableModel) this.factTable.getModel();
-            model.addRow(row);
-        }
+    public void addRow(Object[] row) {
+        DefaultTableModel model = (DefaultTableModel) this.factTable.getModel();
+        model.addRow(row);
+    }
 
-        public int getSelectedRow() { return this.factTable.getSelectedRow();}
+    public int getSelectedRow() { return this.factTable.getSelectedRow();}
 
-        public void deleteRow(int index) {
-            DefaultTableModel model = (DefaultTableModel) this.factTable.getModel();
-            model.removeRow(index);
-        }
 
-        public void clearTable() {
-            int tableSize = this.factTable.getRowCount();
-            for(int i=0; i<tableSize; i++) {
-                deleteRow(i);
+
+    public void deleteRow(int index) {
+        DefaultTableModel model = (DefaultTableModel) this.factTable.getModel();
+        model.removeRow(index);
+    }
+
+    public void clearTable() {
+            DefaultTableModel table = (DefaultTableModel) this.factTable.getModel();
+            while(table.getRowCount() > 0) {
+                table.removeRow(0);
             }
         }
-
     }
