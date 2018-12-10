@@ -81,6 +81,10 @@ public class ClientView extends JPanel {
             deleteRow(i);
         }
     }
+
+    public JTable getClientTable() {
+        return clientTable;
+    }
     // Action Listeners
     public void addCreerClientButton(ActionListener listenerForCreerClient) {
         creerClientButton.addActionListener(listenerForCreerClient);
@@ -90,7 +94,5 @@ public class ClientView extends JPanel {
         supprimerClientButton.addActionListener(listenerForSupprimerClient);
     }
 
-    public JTable getClientTable() {
-        return clientTable;
-    }
+
 }
