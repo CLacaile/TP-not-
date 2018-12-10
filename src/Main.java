@@ -2,6 +2,8 @@ import controller.*;
 import model.*;
 import view.TPView;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(final String[] args) {
@@ -44,16 +46,16 @@ public class Main {
 
         System.out.println("************* Liste des factures *************");
         DAO<Facture> daofacture = new DAOFacture();
-        for(int i=1; i<=3; i++) {
-            Client c = daofacture.find(i).getClientFact();
+        ArrayList<Facture> factures = daofacture.findAll();
+        for(int i=0; i<factures.size(); i++) {
             System.out.println("---------- Facture #"+i+" ----------");
-            System.out.println("N°: "+ daofacture.find(i).getIdFact());
-            System.out.println("Client: "+ c.getPrenomC() + " " + c.getNomC());
-            for(int j=0; j<daofacture.find(i).getProduitsFact().size(); j++) {
-                Produit p = daofacture.find(i).getProduitsFact().get(j);
-                System.out.println("Produit #"+p.getIdP()+":\t"+p.getNomP()+"\t"+p.getPrixP()+"€\t"+daofacture.find(i).getQteProdFact().get(j));
+            System.out.println("N°: "+ factures.get(i).getIdFact());
+            System.out.println("Client: "+ factures.get(i).getClientFact().getPrenomC() + " " + factures.get(i).getClientFact().getPrenomC());
+            for(int j=0; j<factures.get(i).getProduitsFact().size(); j++) {
+                Produit p = factures.get(i).getProduitsFact().get(j);
+                System.out.println("Produit #"+p.getIdP()+":\t"+p.getNomP()+"\t"+p.getPrixP()+"€\t"+factures.get(i).getQteProdFact().get(j));
             }
-            System.out.println("Montant total: "+daofacture.find(i).getMontantFact()+"€");
+            System.out.println("Montant total: "+factures.get(i).getMontantFact()+"€");
         }
 
         System.out.println("************* Liste des bons de commandes *************");
