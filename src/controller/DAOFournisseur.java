@@ -48,5 +48,15 @@ public class DAOFournisseur extends DAO<Fournisseur> {
 
     @Override
     public void delete(Fournisseur obj) {
+        try {
+            String sql = "DELETE FROM fournisseur WHERE idF="+obj.getIdF();
+            PreparedStatement pst = connect.prepareStatement(sql);
+            pst.executeUpdate();
+            System.out.println("Fournisseur supprimé");
+            pst.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
