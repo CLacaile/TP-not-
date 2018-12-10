@@ -3,6 +3,7 @@ package controller;
 import model.Facture;
 import model.Produit;
 
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,7 @@ public class DAOFacture extends DAO<Facture> {
         }
         return count;
     }
+
 
     @Override
     public Facture find(int id) {
@@ -62,6 +64,31 @@ public class DAOFacture extends DAO<Facture> {
     }
 
     @Override
+    public ArrayList<Facture> findAll() {
+        ArrayList<Facture> factures = new ArrayList<>();
+        ArrayList<Integer> indexList = new ArrayList<>();
+        try {
+            // Récupérer la liste des index (non distincts)
+            String sql = "SELECT idFact FROM facture";
+            PreparedStatement pst = connect.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                indexList.add(rs.getInt(1));
+            }
+            // Création factures
+            for(int i=0; i<indexList.size(); i++) {
+                Facture facture = find(indexList.get(i));
+                if(!factures.contains(facture))
+                    factures.add(facture);
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return factures;
+    }
+
+    @Override
     public Facture create(Facture obj) {
         return null;
     }
@@ -72,7 +99,6 @@ public class DAOFacture extends DAO<Facture> {
     }
 
     @Override
-    public Facture delete(Facture obj) {
-        return null;
+    public void delete(Facture obj) {
     }
 }

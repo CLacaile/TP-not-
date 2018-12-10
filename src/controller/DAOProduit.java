@@ -5,6 +5,7 @@ import model.Produit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAOProduit extends DAO<Produit> {
     public int getNbOfProduits() {
@@ -47,6 +48,31 @@ public class DAOProduit extends DAO<Produit> {
     }
 
     @Override
+    public ArrayList<Produit> findAll() {
+        ArrayList<Produit> produits = new ArrayList<>();
+        ArrayList<Integer> indexList = new ArrayList<>();
+        try {
+            // Récupérer la liste des index (non distincts)
+            String sql = "SELECT idP FROM produit";
+            PreparedStatement pst = connect.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                indexList.add(rs.getInt(1));
+            }
+            // Création produits
+            for(int i=0; i<indexList.size(); i++) {
+                Produit produit = find(indexList.get(i));
+                if(!produits.contains(produit))
+                    produits.add(produit);
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return produits;
+    }
+
+    @Override
     public Produit create(Produit obj) {
         return null;
     }
@@ -57,8 +83,7 @@ public class DAOProduit extends DAO<Produit> {
     }
 
     @Override
-    public Produit delete(Produit obj) {
-        return null;
+    public void delete(Produit obj) {
     }
 
 }

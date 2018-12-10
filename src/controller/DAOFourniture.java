@@ -46,6 +46,11 @@ public class DAOFourniture extends DAO<Fourniture> {
     }
 
     @Override
+    public ArrayList<Fourniture> findAll() {
+        return null;
+    }
+
+    @Override
     public Fourniture create(Fourniture obj) {
         return null;
     }
@@ -56,7 +61,6 @@ public class DAOFourniture extends DAO<Fourniture> {
     }
 
     @Override
-    public Fourniture delete(Fourniture obj) {
-        return null;
+    public void delete(Fourniture obj) {
     }
 }

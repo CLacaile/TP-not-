@@ -5,6 +5,7 @@ import model.Client;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAOClient extends DAO<Client> {
     public int getNbOfClients() {
@@ -47,6 +48,31 @@ public class DAOClient extends DAO<Client> {
     }
 
     @Override
+    public ArrayList<Client> findAll() {
+        ArrayList<Client> clients = new ArrayList<>();
+        ArrayList<Integer> indexList = new ArrayList<>();
+        try {
+            // Récupérer la liste des index (non distincts)
+            String sql = "SELECT idC FROM client";
+            PreparedStatement pst = connect.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                indexList.add(rs.getInt(1));
+            }
+            // Création produits
+            for(int i=0; i<indexList.size(); i++) {
+                Client client = find(indexList.get(i));
+                if(!clients.contains(client))
+                    clients.add(client);
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
+
+    @Override
     public Client create(Client obj) {
         return null;
     }
@@ -57,7 +83,16 @@ public class DAOClient extends DAO<Client> {
     }
 
     @Override
-    public Client delete(Client obj) {
-        return null;
+    public void delete(Client obj) {
+        try {
+            String sql = "DELETE FROM client WHERE idC="+obj.getIdC();
+            PreparedStatement pst = connect.prepareStatement(sql);
+            pst.executeUpdate();
+            System.out.println("Client supprimé");
+            pst.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -5,6 +5,7 @@ import model.Fournisseur;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAOFournisseur extends DAO<Fournisseur> {
 
@@ -31,6 +32,11 @@ public class DAOFournisseur extends DAO<Fournisseur> {
     }
 
     @Override
+    public ArrayList<Fournisseur> findAll() {
+        return null;
+    }
+
+    @Override
     public Fournisseur create(Fournisseur obj) {
         return null;
     }
@@ -41,7 +47,6 @@ public class DAOFournisseur extends DAO<Fournisseur> {
     }
 
     @Override
-    public Fournisseur delete(Fournisseur obj) {
-        return null;
+    public void delete(Fournisseur obj) {
     }
 }
