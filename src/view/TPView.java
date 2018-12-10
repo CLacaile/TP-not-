@@ -50,4 +50,22 @@ public class TPView extends JFrame {
         return this.editFactPanel;
     }
 
+    // Erreurs et avertissements
+    /**
+     * Method to display a JOptionPane#showMessageDialog with a message and error icon
+     * @param errorMessage the message
+     */
+    public void displayErrorMessage(String errorMessage) {
+        Icon errorIcon = new ImageIcon("img/erroricon.png");
+        JOptionPane.showMessageDialog(this, errorMessage, "CheckIO: Error", getDefaultCloseOperation(), errorIcon);
+    }
+
+    /**
+     * Method to display a JOptionPane#showMessageDialog with a message
+     * @param warningMessage the message
+     */
+    public int displayWarningMessage(String warningMessage) {
+        return JOptionPane.showConfirmDialog(null, warningMessage, "CheckIO: Warning" , JOptionPane.YES_NO_OPTION);
+    }
+
 }
