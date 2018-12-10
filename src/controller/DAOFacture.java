@@ -100,5 +100,15 @@ public class DAOFacture extends DAO<Facture> {
 
     @Override
     public void delete(Facture obj) {
+        try {
+            String sql = "DELETE FROM facture WHERE idFact="+obj.getIdFact();
+            PreparedStatement pst = connect.prepareStatement(sql);
+            pst.executeUpdate();
+            System.out.println("Facture supprimée");
+            pst.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
