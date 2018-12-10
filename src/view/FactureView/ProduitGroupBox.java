@@ -95,5 +95,17 @@ public class ProduitGroupBox extends JPanel {
         this.catPListe.addItem(row);
     }
 
+    public void clearNomPComboBox() {
+        int count = this.nomPListe.getItemCount();
+        for(int i=0; i<count; i++) {
+            this.nomPListe.removeItemAt(i);
+        }
+    }
+    public void clearCatPComboBox() {
+        int count = this.catPListe.getItemCount();
+        for(int i=0; i<count; i++) {
+            this.catPListe.removeItemAt(i);
+        }
+    }
 
 }

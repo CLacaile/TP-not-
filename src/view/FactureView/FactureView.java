@@ -62,4 +62,11 @@ public class FactureView extends JPanel {
             model.removeRow(index);
         }
 
+        public void clearTable() {
+            int tableSize = this.factTable.getRowCount();
+            for(int i=0; i<tableSize; i++) {
+                deleteRow(i);
+            }
+        }
+
     }
