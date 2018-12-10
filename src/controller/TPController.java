@@ -36,8 +36,11 @@ public class TPController {
         this.model.setFactures(DAOfacture.findAll());
         displayFacturesDataFromModel();
 
-        //
+        // Init des Listeners : suppressions
+        ///suppression client
         this.view.getClientPanel().addSupprimerClientListener(new SupprimerClientListener());
+        ///suppression produit
+        this.view.getProduitPanel().addSupprimerProduitListener(new SupprimerProduitListener());
     }
 
     /**
@@ -91,11 +94,46 @@ public class TPController {
             // Suppression Base de Données
             int selectRowIndex = view.getClientPanel().getSelectedRow();
             int selectClientID = Integer.parseInt((String) view.getClientPanel().getClientTable().getValueAt(selectRowIndex, 0));
-            Client clientASupp = model.getClients().get(selectClientID-1);
+            Client clientASupp = model.getClientById(selectClientID);
             DAOclient.delete(clientASupp);
             // Mises à jour des vues
             ///supp client
-            view.getClientPanel().clearTable();
+            view.getClientPanel().getClientTable().removeAll();
+            ///supp combobox "editer facture"
+            view.getEditFactPanel().getClientGroupBox().removeAll();
+            view.getEditFactPanel().getClientGroupBox().removeAll();
+            ///ajout données
+            displayClientsDataFromModel();
+            ///factures
+            view.getFacturePanel().getFactTable().removeAll();
+            displayFacturesDataFromModel();
+            /*///editer facture
+            view.getEditFactPanel().getProduitGroupBox().clearCatPComboBox();
+            view.getEditFactPanel().getProduitGroupBox().clearNomPComboBox();*/
+        }
+    }
+
+    private class SupprimerProduitListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Suppression produit?");
+            // Vérifier qu'un produit est sélectionné
+            if(view.getProduitPanel().getSelectedRow() == -1) {
+                view.displayErrorMessage("Sélectionner un produit pour le supprimer !");
+                return;
+            }
+            // Avertissement avant suppression
+            if(view.displayWarningMessage("Voulez-vous vraiment supprimer ce produit ?") != JOptionPane.OK_OPTION) {
+                return;
+            }
+            // Suppression Base de Données
+            int selectRowIndex = view.getProduitPanel().getSelectedRow();
+            int selectProduitID = Integer.parseInt((String) view.getProduitPanel().getProdTable().getValueAt(selectRowIndex, 0));
+            Produit produitASupp = model.getProduits().get(selectProduitID-1);
+            DAOproduit.delete(produitASupp);
+            // Mises à jour des vues
+            ///supp client
+            view.getProduitPanel().clearTable();
             ///supp combobox "editer facture"
             view.getEditFactPanel().getProduitGroupBox().clearCatPComboBox();
             view.getEditFactPanel().getProduitGroupBox().clearNomPComboBox();
