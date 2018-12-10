@@ -6,6 +6,9 @@ import model.Produit;
 import model.TPModel;
 import view.TPView;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -22,32 +25,19 @@ public class TPController {
         this.view = v;
 
         // Récupération des données des clients au lancement de l'app
-        ArrayList<Client> clients = new ArrayList<Client>();
-        int nbOfClients = this.DAOclient.getNbOfClients();
-        for(int i=0; i<nbOfClients; i++) {
-            clients.add(this.DAOclient.find(i+1));
-        }
-        this.model.setClients(clients);
+        this.model.setClients(DAOclient.findAll());
         displayClientsDataFromModel();
 
         // Récupération des données produits au lancement de l'app
-        ArrayList<Produit> produits = new ArrayList<Produit>();
-        int nbOfProduits = this.DAOproduit.getNbOfProduits();
-        for(int i=0; i<nbOfProduits; i++) {
-            produits.add(this.DAOproduit.find(i+1));
-        }
-        this.model.setProduits(produits);
+        this.model.setProduits(DAOproduit.findAll());
         displayProduitsDataFromModel();
 
         // Récupération des données factures au lancement de l'app
-        ArrayList<Facture> factures = new ArrayList<Facture>();
-        int nbOfFactures = this.DAOfacture.getNbOfFactures();
-        for(int i=0; i<nbOfFactures; i++) {
-            factures.add(this.DAOfacture.find(i+1));
-        }
-        this.model.setFactures(factures);
+        this.model.setFactures(DAOfacture.findAll());
         displayFacturesDataFromModel();
 
+        //
+        this.view.getClientPanel().addSupprimerClientListener(new SupprimerClientListener());
     }
 
     /**
@@ -81,6 +71,42 @@ public class TPController {
             this.view.getClientPanel().addRow(this.model.getClients().get(i).getClientInfo());
             this.view.getEditFactPanel().getClientGroupBox().addNomCComboBox(this.model.getClients().get(i).getNomCObject());
             this.view.getEditFactPanel().getClientGroupBox().addPrenomCComboBox(this.model.getClients().get(i).getPrenomCObject());
+        }
+    }
+
+
+    private class SupprimerClientListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Suppression client?");
+            // Vérifier qu'un client est sélectionné
+            if(view.getClientPanel().getSelectedRow() == -1) {
+                view.displayErrorMessage("Sélectionner un client pour le supprimer !");
+                return;
+            }
+            // Avertissement avant suppression
+            if(view.displayWarningMessage("Voulez-vous vraiment supprimer ce client ?") != JOptionPane.OK_OPTION) {
+                return;
+            }
+            // Suppression Base de Données
+            int selectRowIndex = view.getClientPanel().getSelectedRow();
+            int selectClientID = Integer.parseInt((String) view.getClientPanel().getClientTable().getValueAt(selectRowIndex, 0));
+            Client clientASupp = model.getClients().get(selectClientID-1);
+            DAOclient.delete(clientASupp);
+            // Mises à jour des vues
+            ///supp client
+            view.getClientPanel().clearTable();
+            ///supp combobox "editer facture"
+            view.getEditFactPanel().getProduitGroupBox().clearCatPComboBox();
+            view.getEditFactPanel().getProduitGroupBox().clearNomPComboBox();
+            ///ajout données
+            displayClientsDataFromModel();
+            ///factures
+            view.getFacturePanel().clearTable();
+            displayFacturesDataFromModel();
+            ///editer facture
+            view.getEditFactPanel().getProduitGroupBox().clearCatPComboBox();
+            view.getEditFactPanel().getProduitGroupBox().clearNomPComboBox();
         }
     }
 }
