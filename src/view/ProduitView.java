@@ -3,11 +3,12 @@ package view;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class ProduitView extends JPanel {
     private JTable prodTable;
     private Object[] tableHeader = {"ID", "Nom", "Catégorie", "Espèce", "Prix", "Stock"};
-    private JButton creerProdButton;
+    private JButton ajouterProdButton;
     private JButton supprimerProdButton;
 
 
@@ -37,13 +38,13 @@ public class ProduitView extends JPanel {
         this.add(scrollPane, gc);
 
         // Bouton créer
-        creerProdButton = new JButton("Créer produit");
+        ajouterProdButton = new JButton("Créer produit");
         gc.gridx = 0;
         gc.gridy = 5;
         gc.gridwidth = 1;
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.BOTH;
-        this.add(creerProdButton, gc);
+        this.add(ajouterProdButton, gc);
 
         // Bouton supprimer
         supprimerProdButton = new JButton("Supprimer produit");
@@ -53,6 +54,10 @@ public class ProduitView extends JPanel {
         gc.gridheight = 1;
         gc.fill = GridBagConstraints.BOTH;
         this.add(supprimerProdButton, gc);
+    }
+
+    public JTable getProdTable() {
+        return this.prodTable;
     }
 
     public void setProdTable(Object[][] prodTableData) {
@@ -71,5 +76,22 @@ public class ProduitView extends JPanel {
         DefaultTableModel model = (DefaultTableModel) this.prodTable.getModel();
         model.removeRow(index);
     }
+
+    public void clearTable() {
+        int tableSize = this.prodTable.getRowCount();
+        for(int i=0; i<tableSize; i++) {
+            deleteRow(i);
+        }
+    }
+
+    // Action Listener
+    public void addAjouterProduitButton(ActionListener listenerForAjouterProduit) {
+        ajouterProdButton.addActionListener(listenerForAjouterProduit);
+    }
+
+    public void addSupprimerProduitListener(ActionListener listenerForSupprimerProduit) {
+        supprimerProdButton.addActionListener(listenerForSupprimerProduit);
+    }
+
 
 }
