@@ -1,8 +1,12 @@
 package view;
 
+import com.sun.tools.corba.se.idl.toJavaPortable.Arguments;
+import model.Client;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class ClientView extends JPanel {
     private JTable clientTable;
@@ -71,4 +75,22 @@ public class ClientView extends JPanel {
         model.removeRow(index);
     }
 
+    public void clearTable() {
+        int tableSize = this.clientTable.getRowCount();
+        for(int i=0; i<tableSize; i++) {
+            deleteRow(i);
+        }
+    }
+    // Action Listeners
+    public void addCreerClientButton(ActionListener listenerForCreerClient) {
+        creerClientButton.addActionListener(listenerForCreerClient);
+    }
+
+    public void addSupprimerClientListener(ActionListener listenerForSupprimerClient) {
+        supprimerClientButton.addActionListener(listenerForSupprimerClient);
+    }
+
+    public JTable getClientTable() {
+        return clientTable;
+    }
 }
