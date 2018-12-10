@@ -79,4 +79,17 @@ public class ClientGroupBox extends JPanel {
         this.prenomCListe.addItem(row);
     }
 
+    public void clearPrenomComboBox() {
+        int count = this.prenomCListe.getItemCount();
+        for(int i=0; i<count; i++) {
+            this.prenomCListe.removeItemAt(i);
+        }
+    }
+
+    public void clearNomCComboBox() {
+        int count = this.nomCListe.getItemCount();
+        for(int i=0; i<count; i++) {
+            this.nomCListe.removeItemAt(i);
+        }
+    }
 }
